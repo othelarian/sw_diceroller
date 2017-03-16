@@ -8,21 +8,23 @@ Item {
     function add() { if (spinValue < 30) spinValue++ }
     Row {
         SWButton {
-            btnWidth: 20
+            btnWidth: 50
             btnValue: "-"
             function activate() { remove() }
         }
         TextInput {
-            width: 30
-            height: 20
+            width: 60
+            height: 50
             text: spinValue
             horizontalAlignment: Text.AlignHCenter
-            font.pixelSize: 12
+            verticalAlignment: Text.AlignVCenter
+            //font.pixelSize: 12
+            font.pointSize: 16
             validator: IntValidator{bottom: 1; top: 30;}
         }
 
         SWButton {
-            btnWidth: 20
+            btnWidth: 50
             btnValue: "+"
             function activate() { add() }
         }

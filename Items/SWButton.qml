@@ -1,12 +1,12 @@
 import QtQuick 2.0
 
 Rectangle {
-    property int btnWidth: 45
+    property int btnWidth: 70
     property string btnValue : "test"
     property color btnColor: "#3cf"
     function activate() {}
     width: btnWidth
-    height: 20
+    height: 50
     color: "#3cf"
     MouseArea {
         anchors.fill: parent
@@ -17,8 +17,14 @@ Rectangle {
     }
     Rectangle {
         x: 1; y: 1
-        width: btnWidth-2; height: 18
+        width: btnWidth-2; height: parent.height-2
         color: btnColor
-        Text { anchors.centerIn: parent; text: btnValue }
+        Text {
+            font.pointSize: 16
+            anchors.centerIn: parent;
+            horizontalAlignment: Text.AlignHCenter
+            verticalAlignment: Text.AlignVCenter
+            text: btnValue
+        }
     }
 }

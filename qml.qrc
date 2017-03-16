@@ -3,5 +3,6 @@
         <file>main.qml</file>
         <file>Items/SWButton.qml</file>
         <file>Items/SWSpinBox.qml</file>
+        <file>Items/SWDiceLauncher.qml</file>
     </qresource>
 </RCC>
