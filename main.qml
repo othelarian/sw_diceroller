@@ -51,6 +51,7 @@ Window {
             deck[index] = tmp
         }
         currentcard = 0;
+        cardBtn.text = "Card (54)"
         swdb.transaction(function(tx) {
             tx.executeSql("DELETE FROM deck;")
             var req = []
@@ -103,6 +104,7 @@ Window {
             // get the deck
             rs = tx.executeSql("SELECT value FROM deck ORDER BY ordre;")
             for (i=0;i<rs.rows.length;i++) deck[i] = parseInt(rs.rows.item(i).value)
+            cardBtn.text = "Card ("+(54-currentcard)+")"
             // get the output
             rs = tx.executeSql("SELECT * FROM output ORDER BY outorder;")
             for (i=0;i<rs.rows.length;i++) outputModel.insert(0,{id: rs.rows.item(i).outorder, value: rs.rows.item(i).value})
@@ -231,7 +233,8 @@ Window {
                 }
             }
             Button {
-                width: 80
+                id: cardBtn
+                width: 100
                 text: "Card"
                 onClicked: {
                     var rep = ""
@@ -254,6 +257,7 @@ Window {
                         else rep += " of Club"
                     }
                     currentcard++
+                    text = "Card ("+(54-currentcard)+")"
                     swdb.transaction(function(tx) {
                         tx.executeSql("UPDATE parameters SET value='"+currentcard+"' WHERE name='currentcard';")
                     })
@@ -270,7 +274,7 @@ Window {
     // output
     ListModel { id: outputModel }
     ListView {
-        anchors.horizontalCenter: parent.horizontalCenter
+        //anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: column.bottom
         anchors.topMargin: 30
         anchors.bottom: parent.bottom
